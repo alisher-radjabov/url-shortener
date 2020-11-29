@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+
+     {{ include('inc/navbar.html.twig') }}
+
+     <div class="container">
+          {% if links %}
+          <table class="table table-stripped" id="articles">
+               <thead>
+                    <tr>
+                         <th>Name</th>
+                         <th>URL</th>
+                         <th>Status</th>
+                         <th>Action</th>
+                    </tr>
+               </thead>
+               <tbody>
+                    {% for link in links %}
+                         <tr>
+                              <td>{{ link.name }}</td>
+                              <td>{{ link.url }}</td>
+                              <td>{{ link.status }}</td>
+                              <td>
+                              <a href="/link/{{ link.id }}" class="btn btn-info">Show</a>
+                              <a href="/link/edit/{{ link.id }}" class="btn btn-primary">Edit</a>
+                              <a href="#" class="btn btn-danger delete-link" data-id="{{ link.id }}">Delete</a>
+                              </td>
+                         </tr>
+                    {% endfor %}
+               </tbody>
+          </table>
+          {% else %}
+          <p>No link found</p>
+          {% endif %}
+     </div>
+
+{% endblock %}

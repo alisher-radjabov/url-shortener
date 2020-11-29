@@ -1,0 +1,6 @@
+index:
+   path: /
+   controller: App\Controller\HomeController::index
+   defaults:
+        path: /home
+        permanent: true
